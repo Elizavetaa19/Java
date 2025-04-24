@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+interface PhoneBook {
+    void add(String lastName, String phoneNumber);
+    List<String> get(String lastName);
+}
+
+class SimplePhoneBook implements PhoneBook {
+    private Map<String, List<String>> phoneBook;
+
+    public SimplePhoneBook() {
+        phoneBook = new HashMap<>();
+    }
+
+    @Override
+    public void add(String lastName, String phoneNumber) {
+        phoneBook.putIfAbsent(lastName, new ArrayList<>());
+        phoneBook.get(lastName).add(phoneNumber);
+    }
+
+    @Override
+    public List<String> get(String lastName) {
+        return phoneBook.getOrDefault(lastName, new ArrayList<>());
+    }
+}
+
+public class PhoneBookDemo {
+    public static void main(String[] args) {
+        SimplePhoneBook myPhoneBook = new SimplePhoneBook();
+
+        // Добавление записей
+        myPhoneBook.add("Иванов", "123-456");
+        myPhoneBook.add("Петров", "789-012");
+        myPhoneBook.add("Иванов", "345-678");
+        myPhoneBook.add("Сидоров", "901-234");
+        
+        // Поиск номеров по фамилии
+        System.out.println("Телефоны Иванова: " + myPhoneBook.get("Иванов"));
+        System.out.println("Телефоны Петрова: " + myPhoneBook.get("Петров"));
+        System.out.println("Телефоны Сидорова: " + myPhoneBook.get("Сидоров"));
+        
+        // Попытка получить телефоны несуществующей фамилии
+        System.out.println("Телефоны несуществующей фамилии: " + myPhoneBook.get("Неизвестный"));
+    }
+}

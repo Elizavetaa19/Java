@@ -1,0 +1,51 @@
+public class Homework {
+
+    // 1. Создание переменных всех пройденных типов данных и инициализация их значениями
+    byte byteVar = 10; // 1 байт
+    short shortVar = 1000; // 2 байта
+    int intVar = 100000; // 4 байта
+    long longVar = 10000000000L; // 8 байт
+    float floatVar = 10.5f; // 4 байта
+    double doubleVar = 20.99; // 8 байт
+    char charVar = 'A'; // 2 байта
+    boolean booleanVar = true; // 1 бит
+
+    public static void main(String[] args) {
+        Homework homework = new Homework();
+
+        // Вызов методов для проверки их работы
+        homework.greet("Иван");
+        System.out.println(homework.isNegative(-5));
+        homework.printSign(10);
+        homework.printSign(-3);
+        homework.printNumbersDivisibleBy3();
+    }
+
+    // 2. Метод, который выводит приветствие с именем
+    public void greet(String name) {
+        System.out.println("Привет, " + name + "!");
+    }
+
+    // 3. Метод, который возвращает true, если число отрицательное, иначе false
+    public boolean isNegative(int number) {
+        return number < 0;
+    }
+
+    // 4. Метод, который печатает, положительное ли число или отрицательное
+    public void printSign(int number) {
+        if (number >= 0) {
+            System.out.println("Число " + number + " положительное.");
+        } else {
+            System.out.println("Число " + number + " отрицательное.");
+        }
+    }
+
+    // 5. Метод, который выводит последовательность чисел от 1000 до 0, кратных 3
+    public void printNumbersDivisibleBy3() {
+        for (int i = 1000; i >= 0; i--) {
+            if (i % 3 == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+}

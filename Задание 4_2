@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Box<T> {
+    private List<T> items;
+
+    public Box() {
+        items = new ArrayList<>();
+    }
+
+    public void add(T item) {
+        items.add(item);
+    }
+
+    public List<T> getItems() {
+        return items;
+    }
+}
+
+public class BoxDemo {
+
+    public static void main(String[] args) {
+        Box<String> stringBox = new Box<>();
+        Box<Integer> integerBox = new Box<>();
+        Box<Float> floatBox = new Box<>();
+
+        // Добавление элементов в коробки
+        stringBox.add("Hello");
+        integerBox.add(10);
+        integerBox.add(20);
+        floatBox.add(5.5f);
+        
+        // Суммирование чисел из коробок
+        int sumIntegers = integerBox.getItems().stream().mapToInt(Integer::intValue).sum();
+        float sumFloats = floatBox.getItems().stream().mapToDouble(Float::doubleValue).sum();
+
+        System.out.println("Сумма целых чисел: " + sumIntegers);
+        System.out.println("Сумма дробных чисел: " + sumFloats);
+    }
+}

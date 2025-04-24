@@ -1,0 +1,28 @@
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class UniqueWords {
+
+    public static void main(String[] args) {
+        String[] words = {
+            "apple", "banana", "orange", "apple", "banana",
+            "kiwi", "grape", "orange", "kiwi", "banana",
+            "peach", "apple", "grape", "kiwi", "peach"
+        };
+
+        // Используем HashMap для подсчета количества вхождений слов
+        Map<String, Integer> wordCount = new HashMap<>();
+
+        for (String word : words) {
+            wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+        }
+
+        // Вывод уникальных слов и их количества
+        System.out.println("Уникальные слова и их количество:");
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}

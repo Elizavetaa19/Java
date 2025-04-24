@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class StringValidator {
+
+    public static void validateString(String input) throws IllegalArgumentException {
+        if (input.matches(".*\\d.*")) { // Проверка на наличие цифр
+            throw new IllegalArgumentException("Строка не должна содержать число!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Введите строку: ");
+        String userInput = scanner.nextLine();
+        
+        try {
+            validateString(userInput);
+            System.out.println("Строка корректна.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        scanner.close();
+    }
+}
